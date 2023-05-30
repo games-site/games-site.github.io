@@ -1,2 +1,0 @@
-SceneManager.push(Scene_Load);
-SceneManager.push(Scene_Options);
