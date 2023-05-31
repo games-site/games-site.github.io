@@ -2,7 +2,7 @@
 <html>
   <head>
 	<link rel="stylesheet" href="styles.css">
-    <title>Games</title>
+    <title>All Games</title>
     <meta property="og:description" content="We do got games on our phone." />
     <meta name="description" content="We do got games on our phone." />
     <meta charset="UTF-8" />
@@ -10,33 +10,29 @@
   </head>
   <body>
   
+  <div class="menubar">
   <div class="topnav">
   <a class="active" href="index.html">Games</a>
   <a href="retro.html">Retro</a>
+  </div>
   </div>
   
 			<h1 class="text-center">All Games</h1>
      <p class="text-center">Here is the full list of games on this site, play some of your favorites or find a new one!</p>
 	 <p class="text-center">Games series are at the bottom and to find one remember everything is sorted alphabetically </p>
 	 <p class="text-center">I don't know how to add a search bar so if you want to find a specific game use ctrl + F</p>
-	 <p class="text-center"> </p>
-	 
-	 <table>
-  <tr>
-    <th>Total Visits</th>
-    <th>Number of Games</th>
-  </tr>
-  <tr>
-    <td>
-<!-- Start of CuterCounter Code -->
-<a href="https://www.cutercounter.com/" target="_blank"><img src="https://www.cutercounter.com/hits.php?id=hmxnfpan&nd=6&style=21" border="0" alt="best free website hit counter"></a>
-<!-- End of CuterCounter Code -->
-	</td>
-    <td>54</td>
-  </tr>
-</table>
+
+  <div class="sortbar">
+    <div class="topnav">
+	<a class="active">Sort by:</a>
+	<a href="#all">All</a>
+    <a href="#moto-x3m">Moto X3M</a>
+    <a href="#riddle-school">Riddle School</a>
+	<a href="#vex">Vex</a>
+  </div>
+  </div>
 	
-      <div class="flex-container">
+      <div id="all" class="flex-container">
           <a href="projects/2048/index.html" class="game-link container">
               <div class="game-tile">
                   <img class="game-icon" src="projects/2048/thumb.png" alt="icon" />
@@ -277,7 +273,7 @@
 		  
 		</div>
 		
-					<h1 class="text-center">Moto X3M Games</h1>
+					<h1 id="moto-x3m" class="text-center">Moto X3M Games</h1>
 				
 		      <div class="flex-container">
 
@@ -317,7 +313,7 @@
           </a>
 		</div>
 		  
-			<h1 class="text-center">Riddle School Games</h1>
+			<h1 id="riddle-school" class="text-center">Riddle School Games</h1>
 			
 			      <div class="flex-container">
 						
@@ -372,7 +368,7 @@
 		  
 		</div>
 		
-					<h1 class="text-center">Vex Games</h1>
+					<h1 id="vex" class="text-center">Vex Games</h1>
 				
 		      <div class="flex-container">
 
