@@ -20,8 +20,32 @@ body {
   align-items: center;
   padding-top: 20px;
   padding-bottom: 30px;
-  gap: 10px 20px;
+  gap: 20px 20px;
 }
+
+.game-link {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  color: #c9c9c9;
+}
+
+.game-tile {
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.game-tile:hover {
+  transform: scale(1.1);
+}
+
+.game-icon {
+  border-radius: 10px;
+}
+
 .menubar {
   background-color: #333;
   overflow: hidden;
@@ -34,7 +58,7 @@ body {
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
-  color: #f2f2f2;
+  color: #c9c9c9;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -50,5 +74,5 @@ body {
 /* Add a color to the active/current link */
 .topnav a.active {
   background-color: #a83234;
-  color: white;
+  color: #c9c9c9;
 }
