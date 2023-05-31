@@ -27,13 +27,12 @@ body {
   padding-bottom: 30px;
   gap: 10px 20px;
 }
-
-table, th, td {
-  border: 2px solid white;
+.menubar {
+  background-color: #333;
+  overflow: hidden;
 }
 
-.topnav {
-  background-color: #333;
+.sortbar {
   overflow: hidden;
 }
 
