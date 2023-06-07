@@ -67,6 +67,10 @@ body {
   font-size: 17px;
 }
 
+.topnav-right a{
+  float: right;
+}
+
 /* Change the color of links on hover */
 .topnav a:hover {
   background-color: #ddd;
@@ -79,4 +83,46 @@ body {
   background-color: #a83234;
   color: #c9c9c9;
     border-radius: 10px;
+}
+
+form
+{
+		margin-top: 50px;
+		transition: all 4s ease-in-out;
+		text-align: center;
+}
+
+.form-control
+{
+	width: 1000px;
+	background: transparent;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid gray;
+	color: #fff;
+	font-size: 24px;
+	margin-bottom: 16px;
+}
+
+input
+{
+		height: 45px;
+}
+
+form .submit
+{
+	background: #a83234;
+	border-color: transparent;
+	color: #fff;
+	font-size: 24px;
+	font-weight: bold;
+	height: 50px;
+	margin-top: 20px;
+}
+
+form .submit:hover
+{
+	background-color: #ddd;
+	cursor: ponter;
+	color: black;
 }
