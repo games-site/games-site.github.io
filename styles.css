@@ -126,3 +126,10 @@ form .submit:hover
 	cursor: ponter;
 	color: black;
 }
+
+div, iframe
+{
+	margin: 0 auto;
+	text-align:center;
+	display:block;
+}
