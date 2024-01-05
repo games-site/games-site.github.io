@@ -1,0 +1,33 @@
+{
+  "name": "Minefork",
+  "short_name": "Minefork",
+  "description": "A modern fork of classic.minecraft.net!",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#008e46",
+  "background_color": "#262626",
+  "icons": [
+    {
+      "src": "resources/app-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "resources/app-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "resources/app-1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "resources/app-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}
