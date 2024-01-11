@@ -33,7 +33,7 @@
   
 			<h1 class="text-center">All Games</h1>
      <p class="text-center">Here is the full list of games on this site that do not fit into another category, play some of your favorites or find a new one!</p>
-	 <p class="text-center">I don't know how to add a search bar so if you want to find a specific game use ctrl + F</p>
+	 <p class="text-center">If your favourite game is missing you can put it in the suggestion box in the top right</p>
 
   <div class="sortbar">
     <div class="topnav">
@@ -44,7 +44,13 @@
 	<a href="#vex">Vex</a>
   </div>
   </div>
-	
+  <script src="search.js"></script>
+  <nav>
+  <div class="nav-container">
+    <div class="search-container">
+      <input class="search-box" id="search-box" type="search"  onkeyup="searching(this)" onfocus="fun(this)" placeholder="Search for Games">
+      <div class="search-results" id="search-results">
+	  
       <div id="all" class="flex-container">
 	            <a href="projects/1v1.lol/index.html" class="game-link container">
               <div class="game-tile">
@@ -406,6 +412,11 @@
           </a>
 		  
 		</div>
+	</div>
+    </div>
+    <div class="links-container"></div>
+  </div>
+</nav>
 		
   </body>
 </html>

@@ -33,7 +33,7 @@
   
 			<h1 class="text-center">Flash Games</h1>
      <p class="text-center">Here are all of the flash games that we have! These are  all ran using the ruffle emulator</p>
-	 <p class="text-center">I don't know how to add a search bar so if you want to find a specific game use ctrl + F</p>
+	 <p class="text-center">If your favourite game is missing you can put it in the suggestion box in the top right</p>
 
   <div class="sortbar">
     <div class="topnav">
@@ -42,6 +42,13 @@
     <a href="#riddle-school">Riddle School</a>
   </div>
   </div>
+  
+    <script src="search.js"></script>
+  <nav>
+  <div class="nav-container">
+    <div class="search-container">
+      <input class="search-box" id="search-box" type="search"  onkeyup="searching(this)" onfocus="fun(this)" placeholder="Search for Games">
+      <div class="search-results" id="search-results">
 	
       <div id="all" class="flex-container">
 		  
@@ -115,6 +122,12 @@
           </a>
 		  
 		</div>
+		
+	</div>
+    </div>
+    <div class="links-container"></div>
+  </div>
+</nav>
 		
   </body>
 </html>
