@@ -133,3 +133,41 @@ div, iframe
 	text-align:center;
 	display:block;
 }
+
+.box{
+    margin-right:50px;
+	margin-left:50px;
+}
+
+.search-box {
+  border: 1px solid #b7b5b5;
+  height: 30px;
+  width: 10%;
+  background-color: white;
+  border-radius: 50px;
+  padding:5px 30px;
+  display: flex;
+  top:18px;
+  flex-direction: column;
+  margin-right:50px;
+  margin-left:50px;
+  margin-top: 10px;
+}
+.search-box.active{
+  border:none;
+  width: 60%;
+  border-bottom:1px solid #b7b5b5;
+  border-radius:0px;
+  /*background:#a83234;*/
+    background-color: white;
+}
+
+hr.dashed {
+  border-top: 3px dotted;
+   border-bottom: none;
+}
+
+hr.double {
+ border-top: 3px double;
+ border-bottom: none;
+}

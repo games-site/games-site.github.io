@@ -35,9 +35,9 @@
      <p class="text-center">Here is all of our retro video games sorted by console and then further by series</p>
 	 <p class="text-important">Make sure you don't forget to manually save as these games are made to save to a cartridge</p>
 	 <p class="text-important">and on PC it doesn't have anywhere to save to so there is a button at the bottom to save the state</p>
-	 <p class="text-center">I don't know how to add a search bar so if you want to find a specific game use ctrl + F</p>
+	 <p class="text-center">If your favourite game is missing you can put it in the suggestion box in the top right</p>
 	 <p class="text-center"> </p>
-	 
+					
 	 		      <div class="flex-container">
 
           <a href="emulation/webretro/index.html" class="game-link container">
@@ -54,7 +54,14 @@
 	<a href="#snes">SNES</a>
 	</div>
 	</div>
-	 
+	  <script src="search.js"></script>
+  <nav>
+  <div class="nav-container">
+    <div class="search-container">
+      <input class="search-box" id="search-box" type="search"  onkeyup="searching(this)" onfocus="fun(this)" placeholder="Search for Games">
+      <div class="search-results" id="search-results">
+	  
+			<hr class="dashed">
 	 	 	<h1 id="gba" class="text-left">Gameboy Advance Games</h1>
 			
   <div class="sortbar">
@@ -138,6 +145,7 @@
           </a>
 		</div>
 		
+					<hr class="dashed">
 			 	 	<h1 id="snes" class="text-left">Super Nintendo Games</h1>
 			
   <div class="sortbar">
@@ -186,6 +194,14 @@
               </div>
           </a>
 		</div>
+		
+		<hr class="dashed">
+		
+			</div>
+    </div>
+    <div class="links-container"></div>
+  </div>
+</nav>
 		
   </body>
 </html>
