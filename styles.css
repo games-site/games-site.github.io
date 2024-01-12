@@ -38,6 +38,16 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.subway-surfers-selection {
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .game-tile:hover {
   transform: scale(1.1);
 }
