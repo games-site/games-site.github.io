@@ -1,0 +1,11 @@
+{
+"TOTAL_MEMORY": 369098752,
+"dataUrl": "subway_miami_v1.data.unityweb",
+"wasmCodeUrl": "subway_miami_v1.wasm.code.unityweb",
+"wasmFrameworkUrl": "subway_miami_v1.wasm.framework.unityweb",
+"asmCodeUrl": "subway_miami_v1.asm.code.unityweb",
+"asmMemoryUrl": "subway_miami_v1.asm.memory.unityweb",
+"asmFrameworkUrl": "subway_miami_v1.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#222C36"
+}
