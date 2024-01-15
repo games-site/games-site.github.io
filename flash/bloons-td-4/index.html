@@ -12,7 +12,9 @@
     window.addEventListener("load", (event) => {
         const ruffle = window.RufflePlayer.newest();
         const player = ruffle.createPlayer();
-        const container = document.getElementById("container");
+        const container = document.getElementById("ruffle");
+        player.style.width = "100%";
+        player.style.height = "100%";
         container.appendChild(player);
         player.load("bloonstd4_moved.swf");
     });
