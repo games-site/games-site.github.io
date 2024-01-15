@@ -1,26 +1,22 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BloonsTD 4</title>
-    <link rel="icon" type="image/x-icon" href="bloonstd2.png" />
-    <link rel="shortcut icon" type="image/x-icon" href="bloonstd2.png" />
+    <title>BloonsTD 5</title>
+    <link rel="icon" type="image/x-icon" href="btd5.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="btd5.png" />
   </head>
   <body>
-    <script src="/js/main.js"></script>
     <div id="ruffle" width="100%" height="100%"></div>
-    <script src="ruffle.js"></script>
-    <script>
-      window.RufflePlayer = window.RufflePlayer || {};
-      window.addEventListener("load", (event) => {
+<script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("load", (event) => {
         const ruffle = window.RufflePlayer.newest();
         const player = ruffle.createPlayer();
-        const container = document.getElementById("ruffle");
-        player.id = "player";
-        player.style.width = "100%";
-        player.style.height = "100%";
+        const container = document.getElementById("container");
         container.appendChild(player);
         player.load("btd5-dat-nolock2.swf");
-      });
-    </script>
+    });
+</script>
+<script src="ruffle/ruffle.js"></script>
   </body>
 </html>
