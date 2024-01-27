@@ -19,7 +19,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-  <body>
+  <body onload="startTime()">
   
   <div class="menubar">
   <div class="topnav">
@@ -27,11 +27,30 @@
   <a href="retro.html">Retro</a>
   <a href="flash.html">Flash</a>
 			  <div class="topnav-right">
+	<a id="txt"></a>
 	<a href="feedback.html"><img src="feedback.png" alt="Description for image" width="15" height="15"></a>
 	<a href="info.html"><img src="info.png" alt="Description for image" width="15" height="15"></a>
   </div>
   </div>
   </div>
+  
+  <script>
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
   
 			<h1 class="text-center">All Games</h1>
      <p class="text-center">Here is the full list of games on this site that do not fit into another category, play some of your favorites or find a new one!</p>
@@ -296,6 +315,13 @@
               <div class="game-tile">
                   <img class="game-icon" src="projects/retro-bowl/img/icon.jpg" alt="icon" />
                   <h1 class="game-title">Retro Bowl</h1>
+              </div>
+          </a>
+		  
+		  <a href="projects/retro-bowl-college/index.html" class="game-link container">
+              <div class="game-tile">
+                  <img class="game-icon" src="projects/retro-bowl-college/unnamed.png" alt="icon" width="360" height="360" />
+                  <h1 class="game-title">Retro Bowl College</h1>
               </div>
           </a>
 		  
