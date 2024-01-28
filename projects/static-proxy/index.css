@@ -1,0 +1,635 @@
+        :root {
+          --bg-color: rgb(20, 20, 20);
+          --card-color: rgb(23, 23, 23);
+     }
+      body {
+          background-color: var(--bg-color);
+          height: 100vh;
+          justify-content: center;
+          overflow: auto;
+          padding: 0px;
+          color: rgb(240, 240, 240);
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          font-weight: 400;
+          text-align: center;
+     }
+      #cards {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+          max-width: 916px;
+          width: 100%;
+     }
+      @media (max-width: 1000px) {
+          .card {
+              width: calc(33.33% - 4px);
+         }
+     }
+      #cards:hover > .card::after {
+          opacity: 1;
+     }
+      .card {
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+          cursor: pointer;
+          display: flex;
+          height: 260px;
+          flex-direction: column;
+          position: relative;
+          width: 300px;
+     }
+      .card:hover::before {
+          opacity: 1;
+     }
+      .card::before, .card::after {
+          border-radius: inherit;
+          content: "";
+          height: 100%;
+          left: 0px;
+          opacity: 0;
+          position: absolute;
+          top: 0px;
+          transition: opacity 500ms;
+          width: 100%;
+     }
+      .card::before {
+          background: radial-gradient( 800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40% );
+          z-index: 3;
+     }
+      .card::after {
+          background: radial-gradient( 600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.4), transparent 40% );
+          z-index: 1;
+     }
+      .card > .card-content {
+          background-color: var(--card-color);
+          border-radius: inherit;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          inset: 1px;
+          padding: 10px;
+          position: absolute;
+          z-index: 2;
+     }
+     /* -- ↓ ↓ ↓ extra card content styles ↓ ↓ ↓ -- */
+      h1, h2, h3, h4, span {
+          color: rgb(240, 240, 240);
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          font-weight: 400;
+          margin: 0px;
+     }
+      i {
+          color: rgb(240, 240, 240);
+     }
+      .card-image {
+          align-items: center;
+          display: flex;
+          height: 140px;
+          justify-content: center;
+          overflow: hidden;
+     }
+      .card-image > i {
+          font-size: 6em;
+          opacity: 0.25;
+     }
+      .card-info-wrapper {
+          align-items: center;
+          display: flex;
+          flex-grow: 1;
+          justify-content: flex-start;
+          padding: 0px 20px;
+     }
+      .card-info {
+          align-items: flex-start;
+          display: flex;
+          gap: 10px;
+     }
+      .card-info > i {
+          font-size: 1em;
+          height: 20px;
+          line-height: 20px;
+     }
+      .card-info-title > h3 {
+          font-size: 1.1em;
+          line-height: 20px;
+     }
+      .card-info-title > h4 {
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 0.85em;
+          margin-top: 8px;
+     }
+     /* -- ↓ ↓ ↓ some responsiveness ↓ ↓ ↓ -- */
+      @media(max-width: 1000px) {
+          body {
+              align-items: flex-start;
+              overflow: auto;
+         }
+          #cards {
+              max-width: 1000px;
+              padding: 10px 0px;
+         }
+          .card {
+              flex-shrink: 1;
+              width: calc(50% - 4px);
+         }
+     }
+      @media(max-width: 500px) {
+          .card {
+              height: 180px;
+         }
+          .card-image {
+              height: 80px;
+         }
+          .card-image > i {
+              font-size: 3em;
+         }
+          .card-info-wrapper {
+              padding: 0px 10px;
+         }
+          .card-info > i {
+              font-size: 0.8em;
+         }
+          .card-info-title > h3 {
+              font-size: 0.9em;
+         }
+          .card-info-title > h4 {
+              font-size: 0.8em;
+              margin-top: 4px;
+         }
+     }
+      @media(max-width: 320px) {
+          .card {
+              width: 100%;
+         }
+     }
+      .link {
+          align-items: center;
+          backdrop-filter: blur(3px);
+          background-color: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 6px;
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+          display: inline-flex;
+          gap: 5px;
+          left: 10px;
+          padding: 10px 20px;
+          position: fixed;
+          text-decoration: none;
+          z-index: 100;
+     }
+      .link:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+     }
+      .link > i, .link > span {
+          height: 20px;
+          line-height: 20px;
+     }
+      .link > span {
+          color: white;
+     }
+     /* homepage stuff */
+      .content {
+          margin-top: 60px;
+     }
+      .title {
+          font-size: 60px;
+          margin: 0;
+          font-weight: 700;
+          background: -webkit-linear-gradient(rgb(252, 252, 252), rgb(252, 252, 252));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+     }
+     /* Play Now button */
+      .rainbow {
+          --border-radius: 15px;
+          --border-width: 4px;
+          appearance: none;
+          position: relative;
+          padding: 1em 2em;
+          border: 0;
+          background-color: rgb(20, 20, 20);
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: normal;
+          color: #fff;
+          z-index: 1;
+          transition: .2s;
+          text-decoration: none;
+     }
+      .rainbow::after {
+          --m-i: linear-gradient(#000, #000);
+          --m-o: content-box, padding-box;
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          padding: var(--border-width);
+          border-radius: var(--border-radius);
+          background-image: conic-gradient( #488cfb, #29dbbc, #ddf505, #ff9f0e, #e440bb, #655adc, #488cfb );
+          -webkit-mask-image: var(--m-i), var(--m-i);
+          mask-image: var(--m-i), var(--m-i);
+          -webkit-mask-origin: var(--m-o);
+          mask-origin: var(--m-o);
+          -webkit-mask-clip: var(--m-o);
+          mask-composite: exclude;
+          -webkit-mask-composite: destination-out;
+          filter: hue-rotate(0);
+          animation: rotate-hue linear 500ms infinite;
+          animation-play-state: paused;
+     }
+      .rainbow:hover::after {
+          animation-play-state: running;
+          cursor: pointer;
+     }
+      @keyframes rotate-hue {
+          to {
+              filter: hue-rotate(1turn);
+         }
+     }
+      .rainbow, .rainbow::after {
+          box-sizing: border-box;
+     }
+      .rainbow:active {
+          --border-width: 5px;
+     }
+      .rainbow:hover {
+          cursor: pointer;
+     }
+     /* navigation bar */
+      .navigation-bar {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: var(--card-color);
+          padding: 20px;
+          color: rgb(240, 240, 240);
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          -webkit-box-shadow: 0px 0px 20px #000000;
+          -moz-box-shadow: 0px 0px 20px #000000;
+          box-shadow: 0px 0px 20px #000000;
+          z-index: 9999;
+     }
+      .navigation-bar p {
+          margin: 0 15px;
+          cursor: pointer;
+          transition: .3s;
+     }
+      .navigation-bar p:hover {
+          color: rgba(255, 255, 255, 0.7);
+     }
+      .navigation-bar .active p {
+          color: 5px solid rgb(0, 140, 255);
+     }
+     /* footer */
+      footer {
+          background-color: var(--card-color);
+          color: rgb(240, 240, 240);
+          padding: 10px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          position: relative;
+     }
+      #phrase {
+          font-size: 20px;
+     }
+     /* For the game tiles and such */
+      .games {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+          grid-gap: 20px;
+          text-align: center;
+          margin: 0 auto;
+     }
+     /* Game card */
+      .game {
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+          cursor: pointer;
+          display: flex;
+          height: auto;
+          flex-direction: column;
+          position: relative;
+          width: 200px;
+          color: white;
+          margin: 0 auto;
+          transition: .4s;
+          padding: 8px;
+          border-radius: 50px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+     }
+      .game::before, .game::after {
+          border-radius: inherit;
+          content: "";
+          height: 100%;
+          left: 0px;
+          opacity: 0;
+          position: absolute;
+          top: 0px;
+          transition: opacity 500ms;
+          width: 100%;
+     }
+      .game::before {
+          background: radial-gradient( 800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40% );
+          z-index: 3;
+     }
+      .game::after {
+          background: radial-gradient( 600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.4), transparent 40% );
+          z-index: 1;
+     }
+      .game:hover::before {
+          opacity: 1;
+     }
+      .game h2 {
+          color: white;
+     }
+      .game img {
+          width: 100%;
+          height: auto;
+          border-radius: 50px;
+          z-index: 1;
+     }
+      .search-input {
+          padding: 14px;
+          background-color: var(--card-color);
+          border-radius: 20px;
+          border: 1px solid grey;
+          width: 30%;
+          font-size: 14px;
+          caret-color: rgb(240, 240, 240);
+          color: white;
+          transition: 0.3s;
+     }
+      .search-input:focus {
+          outline: none;
+          -webkit-box-shadow: 0px 0px 20px #000000;
+          -moz-box-shadow: 0px 0px 20px #000000;
+          box-shadow: 0px 0px 20px #000000;
+     }
+      .search-input::placeholder {
+          color: rgb(240, 240, 240);
+          font-size: 16px;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     }
+      .save-button, .take-me-home-button, .copy-button {
+          padding: 8px;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          border-radius: 14px;
+          border: 1px solid grey;
+          background-color: var(--card-color);
+          color: white;
+          transition: 0.2s;
+     }
+      .save-button:hover, .take-me-home-button:hover, .copy-button {
+          cursor: pointer;
+          border: 1px solid white;
+     }
+      .save-button:active, .take-me-home-button:active, .copy-button:active {
+          opacity: .3;
+     }
+      .settings-sidebar {
+          text-align: left;
+          text-decoration: none;
+          list-style-type: none;
+          max-width: 10%;
+          background-color: var(--card-color);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 30px;
+          padding: 1px;
+     }
+      .settings-sidebar, li {
+          margin: 25px;
+          border-radius: 30px;
+     }
+      .settings-sidebar, li:hover {
+          cursor: pointer;
+     }
+     /* Settings Switches */
+      .switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 34px;
+     }
+      .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+     }
+      .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          -webkit-transition: .3s;
+          transition: .3s;
+     }
+      .slider:before {
+          position: absolute;
+          content: "";
+          height: 26px;
+          width: 26px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          -webkit-transition: .3s;
+          transition: .3s;
+     }
+      input:checked + .slider {
+          background-color: #35c759;
+     }
+      input:focus + .slider {
+          box-shadow: 0 0 1px #35c759;
+     }
+      input:checked + .slider:before {
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
+     }
+     /* Rounded sliders */
+      .slider.round {
+          border-radius: 34px;
+     }
+      .slider.round:before {
+          border-radius: 50%;
+     }
+      .appearance-tab {
+          display: none;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          max-width: 300px;
+          margin-left: 20px;
+     }
+      .settings-content {
+          display: flex;
+         /* Use Flexbox for layout */
+     }
+      .settings-sidebar {
+          flex: 0 0 200px;
+         /* Sidebar width */
+     }
+      .settings-right-section {
+          flex: 1;
+         /* Flexible space to occupy the remaining area */
+          margin-left: 20px;
+         /* Add space between the sidebar and tab */
+     }
+     /* For iframe in load.html */
+      .load-iframe {
+          height: 40vw;
+          width: 60vw;
+          border: 4px solid black;
+          border-radius: 6px;
+          background: #191919;
+          background-image: url("/assets/img/loading-spinner.gif");
+          background-repeat: no-repeat;
+          background-position: 50% 50%;
+          left: 0;
+          position: relative;
+          max-width: 1000px;
+          max-height: 600px;
+     }
+     /* For buttons in load.html */
+      .bar {
+          display: flex;
+          align-items: center;
+          max-width: 936px;
+          min-width: none;
+          justify-content: center;
+     }
+      .buttons {
+          margin-left: auto;
+          display: flex;
+          gap: 5px;
+     }
+      .fullscreen-svg, .share-icon, .resize-icon {
+          height: auto;
+          width: 22px;
+          background-color: var(--card-color);
+          padding: 9px;
+          border-radius: 12px;
+          transition: 0.3s;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+     }
+      .fullscreen-svg:hover, .share-icon:hover, .resize-icon:hover {
+          transform: scale(1.15);
+          cursor: pointer;
+     }
+     /* Share popup on load.html */
+      .share-popup {
+          position: fixed;
+          border-radius: 18px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 300px;
+          height: 200px;
+          background-color: var(--card-color);
+          border: 1px solid gray;
+          padding: 20px;
+          text-align: center;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+     }
+      .encoded-url {
+          margin-bottom: 20px;
+          word-break: break-all;
+          color: white;
+          border: 1px solid grey;
+          border-radius: 8px;
+          padding: 4px;
+     }
+      .close-button {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-size: 20px;
+          color: white;
+          cursor: pointer;
+     }
+      .popup-text {
+          color: white;
+          font-size: 20px;
+          margin: 10px;
+     }
+     /* For the App tiles and such */
+      .apps {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+          grid-gap: 20px;
+          text-align: center;
+          margin: 0 auto;
+     }
+     /* App card */
+      .app {
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+          cursor: pointer;
+          display: flex;
+          height: auto;
+          flex-direction: column;
+          position: relative;
+          width: 200px;
+          color: white;
+          margin: 0 auto;
+          transition: .4s;
+          padding: 8px;
+          border-radius: 50px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+     }
+      .app::before, .app::after {
+          border-radius: inherit;
+          content: "";
+          height: 100%;
+          left: 0px;
+          opacity: 0;
+          position: absolute;
+          top: 0px;
+          transition: opacity 500ms;
+          width: 100%;
+     }
+      .app::before {
+          background: radial-gradient( 800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40% );
+          z-index: 3;
+     }
+      .app::after {
+          background: radial-gradient( 600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.4), transparent 40% );
+          z-index: 1;
+     }
+      .app:hover::before {
+          opacity: 1;
+     }
+      .app h2 {
+          color: white;
+     }
+      .app img {
+          width: 100%;
+          height: auto;
+          border-radius: 50px;
+          z-index: 1;
+     }
+      .app:hover {
+          background-color: #383838;
+     }
+     
+     /* for da wave */
+     .wave-svg-1 {
+      bottom: 0;
+      width: 100%;
+      position: fixed;
+      left: 0;
+     }
+    
