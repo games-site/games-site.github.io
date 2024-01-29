@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Snail Bob 2 Unblocked - ubg235 GameDistribution</title>
+            <meta http-equiv="Content-Type" content="text/html, charset=utf-8" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="apple-touch-fullscreen" content="yes" />
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+            <!-- Include the HTML5 API -->
+            <script type="text/javascript" src="patch/js/gameplayer-io-api.js?cdn.gameplayer.io/api/js/game.js"></script>
+        </head>
+        <body style="margin: 0px; padding: 0px; background: #000;">
+            <div id="main_container"></div>
+            
+            <!-- Load the HTML5 API -->
+            <script type="text/javascript">
+            var SpilData = {
+                id: '576742227280292229' // You receive this value from Spil Games
+            };
+                
+            GameAPI.loadAPI (function (apiInstance) {
+                
+                // The API is ready for use.
+                apiInstance.Branding.displaySplashScreen(function(){});
+                
+            }, SpilData);
+            </script>
+            <script type="text/javascript" src="game.js"></script>
+            <script src="js/analytics_ubg_v1_4.js"></script>
+            <script src="js/ubg235_client_v1_1.js"></script>
+
+        </body>        
+    </html>
