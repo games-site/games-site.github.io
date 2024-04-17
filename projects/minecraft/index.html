@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R1ZCLH6XCR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R1ZCLH6XCR');
+</script>
+
+<title>Minefork</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="author" content="Brandon Bennett">
+<meta name="description" content="A modern fork of classic.minecraft.net!">
+<meta property="og:title" content="Minefork">
+<meta property="og:description" content="A modern fork of classic.minecraft.net!">
+<meta property="og:image" content="https://offroaders123.github.io/Minefork/textures/background.jpg">
+<meta property="og:url" content="https://offroaders123.github.io/Minefork/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#008e46">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Minefork">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<base href=".">
+<link rel="canonical" href="https://offroaders123.github.io/Minefork/">
+<link rel="manifest" href="manifest.webmanifest">
+<!--link rel="icon" type="image/svg+xml" href=""-->
+<link rel="icon" type="image/png" sizes="16x16" href="resources/icon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="resources/icon-32.png">
+<!--link rel="apple-touch-icon" sizes="180x180" href=""-->
+
+<style>
+  /* ========================================================================== Global forms ========================================================================== */
+  /** * 1. Change the font styles in all browsers (opinionated). * 2. Remove the margin in Firefox and Safari. */
+  button, input, optgroup, select, textarea {
+    margin: 0;
+    font-size: 100%;
+    font-family: sans-serif;
+    line-height: 1.15;
+  }
+  textarea {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  /* ========================================================================== Global elements ========================================================================== */
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  html {
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%;
+   /* Prevent adjustments of font size after orientation changes in IE on Windows Phone */
+    -webkit-text-size-adjust: 100%;
+   /* Prevent adjustments of font size after orientation changes in iOS */
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    margin: 0;
+   /* Remove the margin in all browsers */
+    color: inherit;
+  }
+  * {
+    font-family: Minecraft;
+    color: #ffffff;
+    text-shadow: 2px 2px #3f3f3f;
+  }
+  #version {
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  #hotbar {
+    margin-left: -92px;
+    margin-bottom: env(safe-area-inset-bottom,0px);
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    width: 184px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  #chat {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    pointer-events: none;
+    z-index: 3;
+  }
+  #previewWindow {
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 60px;
+    width: 480px;
+    height: 300px;
+    z-index: 4;
+  }
+  #menu {
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 5;
+  }
+  @font-face {
+    font-family: "Minecraft";
+    src: url("fonts/minecraft.woff") format("woff"), url("fonts/minecraft.ttf") format("truetype");
+  }
+  #progress {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 6;
+  }
+  #overlay {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 7;
+  }
+  #mobile {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    text-align: center;
+    background-image: url("../textures/background.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: 8;
+  }
+  #text_vertical {
+    position: relative;
+    top: 50%;
+    text-align: center;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  #text_vertical a:link {
+    color: #ffff40;
+  }
+  #text_vertical a:visited {
+    color: #ffff40;
+  }
+  #text_vertical a:hover {
+    color: #ffff40;
+  }
+  #text_vertical a:active {
+    color: #ffff40;
+  }
+  #webgl_webrtc {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    text-align: center;
+    background-image: url("../textures/background.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: 8;
+  }
+  #hide {
+    position: absolute;
+    left: -9999px;
+  }
+</style>
+
+</head>
+
+<body>
+
+<div class="page-content">
+  <main role="main" class="u-main"></main>
+</div>
+
+<div id="hide">
+  <textarea class="js-copytextarea">url_to_copy</textarea>
+</div>
+
+<div id="version"></div>
+<div id="hotbar"></div>
+<div id="previewWindow"></div>
+<div id="chat"></div>
+<div id="menu"></div>
+<div id="progress"></div>
+<div id="overlay"></div>
+
+<div id="mobile">
+  <div id="text_vertical">
+    <p>
+      <h2>Sorry!</h2>
+    </p>
+    <p>This version of Minecraft<br>requires a keyboard.</p>
+    <P>Please try again on another device.</p>
+  </div>
+</div>
+
+<div id="webgl_webrtc">
+  <div id="text_vertical">
+    <p>
+      <h2>Sorry!</h2>
+    </p>
+    <p>It seems like your browser doesn’t support<br>WebGL or WebRTC that is required to run this game.</p>
+    <p>Find a new one at <a href="https://browsehappy.com" target="_blank">https://browsehappy.com</a></p>
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+<script>
+  navigator.serviceWorker.register("service-worker.js");
+</script>
+
+</body>
+
+</html>

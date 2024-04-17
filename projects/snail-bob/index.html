@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R1ZCLH6XCR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R1ZCLH6XCR');
+</script>
+
+	<title>Snail Bob</title>
+
+	<meta http-equiv="Content-Type" content="text/html, charset=utf-8" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<!-- Include the HTML5 API -->
+	<script type="text/javascript" src="patch/js/gameplayer-io-api.js?cdn.gameplayer.io/api/js/game.js"></script>
+
+	<style>
+        #spilgames-splash-screen{
+            width: 100%;
+            height: 100%;
+        background: url('http://www8.agame.com/mirror/img/Splash_Image_A10.png') top center no-repeat; /* Change "A10" to "GGG" or "Zibbo" based on the brand your game matches */
+            position: absolute;
+            z-index: 10000; /* Make sure its on top of the game */
+            background-size: 90%;
+            background-color:#3890ae; /* Change to #FFF for GGG or Zibbo branded games */
+        }
+        .spilgames-splash-screen-gone{
+            display:none !important;
+        }
+	</style>
+</head>
+
+<body style="margin: 0px; padding: 0px; background: #000;">
+    <!-- placeholder for the Spil Games Splash Screen -->
+    <div id="spilgames-splash-screen" class="spilgames-splash-screen-gone"></div>
+
+	<div id="main_container"></div>
+
+	<script type="text/javascript">
+	var SpilData = {
+	    id: '576742227280290427' // You receive this value from Spil Games
+	};
+
+	GameAPI.loadAPI (function (apiInstance) {
+	    // The API is ready for use.
+        if (console && console.log) {
+	       console.log('GameAPI version ' + apiInstance.version + ' loaded!');
+        }
+
+	    // Checks if splash screen is enabled and if it has an 'action' method
+            apiInstance.Branding.displaySplashScreen(function(){});
+	    /*depricated
+	    var splashData = apiInstance.Branding.getSplashScreen();
+            if(splashData.show && splashData.action) {
+
+            var splashScreen = document.getElementById('spilgames-splash-screen');
+            splashScreen.addEventListener('click', splashData.action);
+            splashScreen.classList.remove('spilgames-splash-screen-gone');
+
+            // Displays the splash screen for 2 seconds,
+            window.setTimeout(function() {
+                splashScreen.classList.add('spilgames-splash-screen-gone');
+            }, 2000);
+
+            }*/
+
+	}, SpilData);
+	</script>
+    <script type="text/javascript" src="game.js"></script>
+    <script src="js/analytics_ubg_v1_4.js"></script>
+    <script src="js/ubg235_client_v1_1.js"></script>
+</body>
+
+</html>

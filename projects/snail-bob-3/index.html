@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R1ZCLH6XCR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R1ZCLH6XCR');
+</script>
+	<title>Snail Bob 3</title>
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icon.png">
+	<meta name="MobileOptimized" content="960">
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta http-equiv="Content-Type" content="text/html, charset=utf-8" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="viewport" content="minimal-ui" /><!-- Include the HTML5 API -->
+	<script type="text/javascript" src="cdn/game_api.js"></script>
+	<script type="text/javascript" src="game.js"></script>
+</head>
+
+<body style="-ms-touch-action: none; margin: 0px; padding: 0px; background: #fff;">	
+	<div id="main_container"></div>
+	<script type="text/javascript">
+		var SpilData = {
+			id: '576742227280293842'
+		};
+
+		GameAPI.loadAPI(function (apiInstance) {
+			apiInstance.Branding.displaySplashScreen(function () { });
+
+			var logoData = apiInstance.Branding.getLogo();
+			if (apiInstance.Branding.data.branding.main) spilLogoAction = logoData.action;
+
+			var buttonProperties = apiInstance.Branding.getLink('more_games');
+			spilMoreGames = buttonProperties.action;
+
+			//Cross Promo
+			var linkLabel1 = 'snail_bob';
+			var linkLabel2 = 'snail_bob2';
+			var appStoreLink1 = apiInstance.Branding.getLink(linkLabel1);
+			var appStoreLink2 = apiInstance.Branding.getLink(linkLabel2);
+			showFirstBob = appStoreLink1.action;
+			showSecondBob = appStoreLink2.action;
+		}, SpilData);
+
+		var debugApi;
+		var spilMoreGames, spilLogoAction;
+
+
+		function pauseGame() {
+			if (window.console && window.console.log) {
+				console.log('The advertisement is about to show, you should pause your game');
+			}
+			if (stage) stage.stop();
+			mixer.channels[0].pause();
+		}
+
+		function resumeGame() {
+			if (window.console && window.console.log) {
+				console.log('The advertisment is shown and your game can now be resumed');
+			}
+			if (stage) stage.start();
+			mixer.channels[0].resume();
+		}
+	</script>
+  <script src="js/analytics_ubg_v1_4.js"></script>
+  <script src="js/ubg235_client_v1_1.js"></script>
+</body>
+
+</html>

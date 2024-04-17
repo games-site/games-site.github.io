@@ -1,0 +1,33 @@
+<html>
+  <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R1ZCLH6XCR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R1ZCLH6XCR');
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Super Smash Flash 2</title>
+    <link rel="icon" type="image/x-icon" href="thumb.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="thumb.png" />
+  </head>
+  <body>
+    <div id="ruffle" width="100%" height="100%"></div>
+<script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("load", (event) => {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        const container = document.getElementById("ruffle");
+        player.style.width = "100%";
+        player.style.height = "100%";
+        container.appendChild(player);
+        player.load("super-smash-flash-2.swf");
+    });
+</script>
+<script src="ruffle/ruffle.js"></script>
+  </body>
+</html>
