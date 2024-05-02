@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <title>Poker - by lexterror</title>
+   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+   <!-- -->
+   <link rel="stylesheet" href="static/css/poker.css" type="text/css">
+
+   <link rel="shortcut icon" href="static/images/chip5.png" />
+
+   <script charset="UTF-8" src=static/js/jsholdem/poker.js></script>    
+   <script charset="UTF-8" src=static/js/jsholdem/hands.js></script>
+   <script charset="UTF-8" src=static/js/jsholdem/bot.js></script>
+   <script charset="UTF-8" src=static/js/gui_if.js></script>
+   <script charset="UTF-8" src=static/js/jquery.js></script> 
+</head>
+<style>
+
+body {
+  font-family: tabular;
+
+}
+/*
+.image {
+  width:100%;
+  height:100%;
+  background:url(carpet.jpg)  no-repeat center center fixed;
+  top: 0;
+  bottom:0;
+  position: fixed;
+  overflow-y: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}*/
+
+body, html {
+    margin: 0 auto;
+    overflow-x: hidden;
+    width: 100%;
+    font-family: tabular;
+    height: 100%;
+    min-height: 720px;
+  background: url(static/images/wood.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+   #settings {
+   z-index: 9999999999;
+   display: none;
+   }
+
+
+    
+#centeractions {
+    width: 330px;
+    margin: 0 auto;
+    
+}
+
+
+#BGB {
+    background: transparent;
+}
+
+#mainsettings {
+    width: 300px;
+    height: 118px;
+    border-radius: 0px;
+    float: left;
+    margin-left: 1px;
+    margin-top: 0px;
+
+}
+#cheatsheet {
+    top: 520px;
+    width: 338px;
+    height: 127px;
+    background-image: url(static/images/carbon.png);
+    background-repeat: repeat;
+    border-radius: 3px;
+    color: #fff;
+    position: absolute;
+    border: 1px solid yellowgreen;
+    z-index: 99999 !important;
+    cursor: default;
+    margin: 0 auto;
+    left: 0; 
+    right: 0;
+    margin-bottom: 50px;
+}
+@font-face {
+font-family: 'digital';
+src: url('fonts/Auto_Digital.eot'); /* IE9 Compat Modes */
+src: url('fonts/Auto_Digital.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+url('fonts/Auto_Digital.woff2') format('woff2'), /* Super Modern Browsers */
+url('fonts/Auto_Digital.woff') format('woff'), /* Pretty Modern Browsers */
+url('fonts/Auto_Digital.ttf')  format('truetype'); /* Safari, Android, iOS */
+font-size: 100%;
+}    
+@font-face {
+font-family: 'western';
+src: url('fonts/western.eot'); /* IE9 Compat Modes */
+src: url('fonts/western.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+url('fonts/western.woff2') format('woff2'), /* Super Modern Browsers */
+url('fonts/western.woff') format('woff'), /* Pretty Modern Browsers */
+url('fonts/western.ttf')  format('truetype'); /* Safari, Android, iOS */
+font-size: 100%;
+}
+@font-face {
+font-family: 'tabular';
+src: url('fonts/Tabular-Regular.eot'); /* IE9 Compat Modes */
+src: url('fonts/Tabular-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+url('fonts/Tabular-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+url('fonts/Tabular-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+url('fonts/Tabular-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+font-size: 100%;
+}
+
+#cheatsheetheader {
+  cursor: move;
+  z-index: 999999998 !important;
+}
+progress[value]::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #09c, #f44);
+
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+</style>
+
+<body onload="parent.init(), checktable(), prechecksound()">
+<script>
+var botarray = [1,2,3,4,5,6,7,8];
+function shufflebots(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+shufflebots(botarray);
+
+</script>
+<div style="z-index:9999999;width:100%;height:24px;position:fixed;background: #000;bottom:0;margin: 0 auto;display:none;">
+<progress id="myprogress" max="100" value="0" style="top:5px;left:0;right:0;width:650px;height:14px;z-index:9999999;margin:0 auto;position:absolute;display:none;"></progress>
+</div>
+    <div id="poker_table" class="poker-table" data-uid="">
+     
+<script>
+display_allpokerchips();
+function display_allpokerchips() {
+// Here has to be some error!!! //
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipred.png' id='mypokerchipred" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);z-index:9999999;'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblue.png' id='mypokerchipblue" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);z-index:9999999;'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgreen.png' id='mypokerchipgreen" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);z-index:9999999;'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblack.png' id='mypokerchipblack" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);z-index:9999999;'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgold.png' id='mypokerchipgold" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);z-index:9999999;'>");
+}
+}     
+</script>     
+     
+        <div id="seat0" class="seat">
+            <div class="holecards" id="hcplayer">
+                <div class="card holecard1" id="hplayer1"></div>
+                <div class="card holecard2" id="hplayer2"></div>
+
+            </div>
+            <div class="name-chips" id="playernamechips">
+                <div class="player-name" id="mplayername"></div>
+                <div class="chips" id="mplayerchips"></div>
+              <div id="button0" class="seat0-button"></div>
+              
+<script>
+display_allplayerpokerchips();
+function display_allplayerpokerchips() {
+// Here has to be some error!!! //
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipred.png' id='playerchipred" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20; i++) {
+    document.write("<img src='static/images/thepokerchipblue.png' id='playerchipblue" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgreen.png' id='playerchipgreen" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblack.png' id='playerchipblack" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgold.png' id='playerchipgold" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+}     
+</script>                
+              
+            </div>
+   
+         <div class="bet" style="" id="mybet">></div>
+
+    
+        </div>
+        <div id="seat1" class="seat">
+            <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                        <span class="speech-bubble" style="display:none" id="botspeech1"></span>     
+            </div>
+            <div class="name-chips" id="botnamechips">
+                        <script>
+     document.write("<img src='' width='48' height='48' id='avatar" + botarray[0] + "' style='padding: 0 !important;' class='avatar'>");             
+     </script>
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerchips"></div>
+            <div id="button1" class="seat1-button"></div>
+            
+            
+<script>
+display_allbot1pokerchips();
+function display_allbot1pokerchips() {
+// Here has to be some error!!! //
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipred.png' id='bot1chipred" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20; i++) {
+    document.write("<img src='static/images/thepokerchipblue.png' id='bot1chipblue" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgreen.png' id='bot1chipgreen" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblack.png' id='bot1chipblack" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgold.png' id='bot1chipgold" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+}     
+</script>    
+            </div>
+   <div class="bet" id="bbet1"></div>         
+        </div>
+        <div id="seat2" class="seat">
+            <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                                                <span class="speech-bubble" style="display:none" id="botspeech2"></span>  
+            </div>
+            <div class="name-chips" id="botnamechips">
+ <script>
+     document.write("<img src='' width='48' height='48' id='avatar" + botarray[1] + "' style='padding: 0 !important;' class='avatar'>");             
+     </script>
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerchips"></div>
+    <div id="button2" class="seat2-button"></div>
+<script>
+display_allbot2pokerchips();
+function display_allbot2pokerchips() {
+// Here has to be some error!!! //
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipred.png' id='bot2chipred" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20; i++) {
+    document.write("<img src='static/images/thepokerchipblue.png' id='bot2chipblue" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgreen.png' id='bot2chipgreen" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblack.png' id='bot2chipblack" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgold.png' id='bot2chipgold" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+}     
+</script> 
+            </div>
+            <div class="bet" id="bbet2"></div>
+        </div>
+        <div id="seat3" class="seat">
+            <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                                          <span class="speech-bubble" style="display:none" id="botspeech3"></span>   
+            </div>
+            <div class="name-chips" id="botnamechips">
+  <script>
+     document.write("<img src='' width='48' height='48' id='avatar" + botarray[2] + "' style='padding: 0 !important;' class='avatar'>");             
+     </script>
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerchips"></div>
+    <div id="button3" class="seat3-button"></div>
+<script>
+display_allbot3pokerchips();
+function display_allbot3pokerchips() {
+// Here has to be some error!!! //
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipred.png' id='bot3chipred" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20; i++) {
+    document.write("<img src='static/images/thepokerchipblue.png' id='bot3chipblue" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgreen.png' id='bot3chipgreen" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblack.png' id='bot3chipblack" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgold.png' id='bot3chipgold" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+}     
+</script> 
+            </div>
+            <div class="bet" id="bbet3"></div>
+        </div>
+        <div id="seat4" class="seat">
+            <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                                           <span class="speech-bubble" style="display:none" id="botspeech4"></span>   
+            </div>
+            <div class="name-chips" id="botnamechips">
+     <script>
+     document.write("<img src='' width='48' height='48' id='avatar" + botarray[3] + "' style='padding: 0 !important;' class='avatar'>");             
+     </script>
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerchips"></div>
+                    <div id="button4" class="seat4-button"></div>
+<script>
+display_allbot4pokerchips();
+function display_allbot4pokerchips() {
+// Here has to be some error!!! //
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipred.png' id='bot4chipred" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20; i++) {
+    document.write("<img src='static/images/thepokerchipblue.png' id='bot4chipblue" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgreen.png' id='bot4chipgreen" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblack.png' id='bot4chipblack" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgold.png' id='bot4chipgold" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+}     
+</script> 
+            </div>
+            <div class="bet" id="bbet4"></div>
+        </div>
+        <div id="seat5" class="seat">
+            <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                                          <span class="speech-bubble" style="display:none" id="botspeech5"></span>  
+            </div>
+            <div class="name-chips" id="botnamechips">
+                <script>
+     document.write("<img src='' width='48' height='48' id='avatar" + botarray[4] + "' style='padding: 0 !important;' class='avatar'>");             
+     </script>  
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerchips"></div>
+                <div id="button5" class="seat5-button"></div>
+<script>
+display_allbot5pokerchips();
+function display_allbot5pokerchips() {
+// Here has to be some error!!! //
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipred.png' id='bot5chipred" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20; i++) {
+    document.write("<img src='static/images/thepokerchipblue.png' id='bot5chipblue" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgreen.png' id='bot5chipgreen" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblack.png' id='bot5chipblack" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgold.png' id='bot5chipgold" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+}     
+</script> 
+            </div>
+            <div class="bet" id="bbet5"></div>
+        </div>
+        <div id="seat6" class="seat">
+            <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                                           <span class="speech-bubble" style="display:none" id="botspeech6"></span>   
+            </div>
+            <div class="name-chips" id="botnamechips">
+     <script>
+     document.write("<img src='' width='48' height='48' id='avatar" + botarray[5] + "' style='padding: 0 !important;' class='avatar'>");             
+     </script>
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerchips"></div>
+                <div id="button6" class="seat6-button"></div>
+<script>
+display_allbot6pokerchips();
+function display_allbot6pokerchips() {
+// Here has to be some error!!! //
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipred.png' id='bot6chipred" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20; i++) {
+    document.write("<img src='static/images/thepokerchipblue.png' id='bot6chipblue" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgreen.png' id='bot6chipgreen" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblack.png' id='bot6chipblack" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgold.png' id='bot6chipgold" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+}     
+</script> 
+            </div>
+            <div class="bet" id="bbet6"></div>
+        </div>
+        <div id="seat7" class="seat">
+            <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                                           <span class="speech-bubble" style="display:none" id="botspeech7"></span>  
+            </div>
+            <div class="name-chips" id="botnamechips">
+                    <script>
+     document.write("<img src='' width='48' height='48' id='avatar" + botarray[6] + "' style='padding: 0 !important;' class='avatar'>");             
+     </script>
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerchips"></div>
+                    <div id="button7" class="seat7-button"></div>
+<script>
+display_allbot7pokerchips();
+function display_allbot7pokerchips() {
+// Here has to be some error!!! //
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipred.png' id='bot7chipred" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20; i++) {
+    document.write("<img src='static/images/thepokerchipblue.png' id='bot7chipblue" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgreen.png' id='bot7chipgreen" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblack.png' id='bot7chipblack" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgold.png' id='bot7chipgold" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+}     
+</script> 
+            </div>
+            <div class="bet" id="bbet7"></div>
+        </div>
+        <div id="seat8" class="seat">
+            <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                                                 <span class="speech-bubble" style="display:none" id="botspeech8"></span>   
+            </div>
+            <div class="name-chips" id="botnamechips">
+           <script>
+     document.write("<img src='' width='48' height='48' id='avatar" + botarray[7] + "' style='padding: 0 !important;' class='avatar'>");             
+     </script>
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerchips"></div>
+                <div id="button8" class="seat8-button"></div>
+<script>
+display_allbot8pokerchips();
+function display_allbot8pokerchips() {
+// Here has to be some error!!! //
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipred.png' id='bot8chipred" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20; i++) {
+    document.write("<img src='static/images/thepokerchipblue.png' id='bot8chipblue" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgreen.png' id='bot8chipgreen" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipblack.png' id='bot8chipblack" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+ for (var i=0; i < 20;i++) {
+    document.write("<img src='static/images/thepokerchipgold.png' id='bot8chipgold" + i + "' style='display:none;width:32px;height:32px;-webkit-filter: drop-shadow(0px 0px 1px #000);filter: drop-shadow(0px 0px 1px #000);'>");
+}
+}     
+</script> 
+            </div>
+            <div class="bet" id="bbet8"></div>
+        </div>
+        <div id="seat9" class="seat">
+            <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                         <img src="" style="width:64px;height:64px;padding: 0 !important;" id="avatar9" class="avatar"><span class="speech-bubble" style="display:none" id="botspeech8"></span>   
+            </div>
+            <div class="name-chips" id="botnamechips">
+      
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerchips"></div>
+                <div id="button9" class="seat9-button"></div>
+            </div>
+            <div class="bet" id="bbet9"></div>
+        </div>
+        <div id="board">
+            <div id="flop1" class="card boardcard"></div>
+            <div id="flop2" class="card boardcard"></div>
+            <div id="flop3" class="card boardcard"></div>
+            <div id="turn" class="card boardcard"></div>
+            <div id="river" class="card boardcard"></div>
+            <div id="burn1" class=""></div>
+            <div id="burn2" class=""></div>
+            <div id="burn3" class=""></div>
+        </div>
+        <div id="pot">
+            <div id="current-pot"></div>
+            <div id="total-pot"></div>
+      
+        </div>
+    </div>
+ 
+
+ 
+
+ 
+    <div id="cheatsheet">
+    
+<div id="tik"  style="max-width: 338px;margin: 0 auto;left: 0; right: 0;height:24px; background-image: url('static/images/buttonlcd.png');position: absolute;display:none;">
+<div id="game-response2" class="textVerticalScroll" style="margin-left: 20px; margin-right: 20px;border-radius:0 0 15px 15px;font-family: digital !important;max-width:338px;left: 0; right: 0;height:24px;color:blue;top:0;vertical-align:middle;margin:0 auto; text-align: center;font-size: 16px !important; line-height: 18px;z-index: 9999999;text-decoration: none !important;padding-left: 20px; padding-right: 20px;"></div></div>
+
+      <div id="mainsettings">
+    <div id="action-options" style="">
+        <div id="fold-button" class="action-button"></div>
+        <div id="call-button" class="action-button"></div>
+    </div>
+     <div id="quick-raises" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"></div>
+    <div id="logo" style="background: #000;height:118px;width:298px;margin-top:84px;border-top: 1px solid yellowgreen; border-bottom: 1px solid yellowgreen;display:none"><span class="speech-bubble" style="display:none" id="botspeech9"></span> 
+
+    <div id="game-response" class="normal-response"></div>
+</div>         
+     
+  
+ 
+ 
+ <div id="setup-options" style="margin-top:84px;">
+        <div id="name-button" class="setup-button">name</div>
+        <div id="speed-button" class="setup-button">speed
+           <div id="speed-selector" style="font-size:12px;">
+              <select id="speed-options" style="font-size:12px;">
+                 <option value="0">1</option>
+                 <option value="1">2</option>
+                 <option value="2">3</option>
+                 <option value="3">4</option>
+                 <option value="4">5</option>
+              </select>
+           </div>
+        </div>
+        <div id="felt-button" class="setup-button" onclick="changetable();">table</div>
+        <div id="check-button" class="setup-button">update</div>
+        <div id="help-button" class="setup-button">help</div>
+        <div id="mode-button" class="setup-button" style="">theme</div>
+        <div id="" class="setup-button">anchor<input type="checkbox" id="lock" name="lock" checked onchange="lock()"></div>
+        <div id="" class="setup-button">sound<input type="checkbox" id="sound" name="sound" checked onchange="checksound()"></div>
+    </div>        
+     
+     
+     </div>
+
+       
+
+    </div>    <!-- end of cheatsheet--> 
+ 
+
+    
+
+
+
+    
+
+
+
+   <style>
+
+      #game-response2 {
+     
+        width: 338px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        position: relative;
+      }
+
+
+      
+    </style>
+
+    
+    
+
+
+
+<audio id="casino" loop>
+  <source src="casino.ogg" type="audio/ogg">
+</audio>
+
+<script> // cliker
+var clickonce = 0;
+
+window.addEventListener( 'click', () => {
+var soundstatus = getLocalStorage("soundstatus");
+if (soundstatus === null) {  // first time
+     soundz = 0;
+  }
+  else soundz = soundstatus;
+if (soundz == 0 && clickonce == 0)
+{
+var audio = document.getElementById("casino");
+ audio.src = 'casino.ogg';
+ audio.load();
+ audio.play();
+}
+clickonce = 1;
+});
+</script>
+   <style>
+    
+    #cs {
+    width: 280px;
+    table-layout: fixed;
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    line-height: 12px;
+    border-collapse: collapse;
+    background: #000;
+    padding: 10px;
+    bottom: 10px;
+    margin-left: 10px;
+    
+    }
+    #rs {
+    width: 300px;
+    height: 449px;
+    position: absolute;
+    float: right;
+    }
+
+    #bgp {
+    color: #fff;
+  
+    }
+    #cs img {
+    max-height: 40px;
+    max-width: 25px;
+    }
+    .tablecard {
+    margin: 0;
+    width: 25px;
+    }
+    .handkind {
+    width: 125px;    
+    padding-left: 5px;
+    }
+    html, body { 
+    height:100%;
+
+    }
+
+    </style>
+
+
+      <div id="history" style="display:none;"></div> 
+      <div id="production-code" style="color:#aaa !important;display:none"></div>
+    <div id="modal-box" style="display:none"></div>
+</body>
+
+  
+<script>
+var dragonoff = 0;
+var draggable = $('#cheatsheet'); //element 
+
+draggable.on('mousedown', function(e){
+
+    if (dragonoff == 1)
+    {
+	var dr = $(this).addClass("drag").css("cursor","move");
+	height = dr.outerHeight();
+	width = dr.outerWidth();
+	ypos = dr.offset().top + height - e.pageY,
+	xpos = dr.offset().left + width - e.pageX;
+	$(document.body).on('mousemove', function(e){
+		var itop = e.pageY + ypos - height;
+		var ileft = e.pageX + xpos - width;
+
+
+		if(dr.hasClass("drag")){
+			dr.offset({top: itop,left: ileft});
+
+		}
+	}).on('mouseup', function(e){
+			dr.removeClass("drag");
+
+	});
+	}
+});
+function lock() {
+
+    var zzz = document.getElementById("lock");
+    if (zzz.checked == true)
+    {
+// Remove the event handler from <div>
+    document.getElementById("cheatsheet").style.cursor = "default";
+    dragonoff = 0; 
+    }
+    if (zzz.checked == false)
+    {
+// Attach an event handler to <div>
+    dragonoff = 1;
+    document.getElementById("cheatsheet").style.cursor = "move";
+    }    
+}
+</script>
+<script>
+
+var soundz = 0;
+        
+function prechecksound ()
+{
+var soundstatus = getLocalStorage("soundstatus");
+  if (soundstatus === null) {  // first time
+     soundz = 0;
+  }
+  else soundz = soundstatus;
+
+if (soundz == 0)
+{
+ document.getElementById("sound").checked = true;
+ audio1 = new Audio('sounds/winner.wav');
+ audio2 = new Audio('sounds/allin.wav');
+ audio3 = new Audio('sounds/fold.wav');
+ audio4 = new Audio('sounds/raise.wav'); 
+ audio5 = new Audio('sounds/chips.wav');
+ audio6 = new Audio('sounds/chipsmed.wav');
+ audio7 = new Audio('sounds/check.wav');
+ audio8 = new Audio('sounds/call.wav');
+ var audio = document.getElementById("casino");
+ audio.src = 'casino.ogg';
+ audio.load();
+ audio.play();
+}
+
+if (soundz == 1)
+{
+ document.getElementById("sound").checked = false;
+audio1 = new Audio('');
+audio2 = new Audio('');
+audio3 = new Audio('');
+audio4 = new Audio(''); 
+audio5 = new Audio('');
+audio6 = new Audio('');
+audio7 = new Audio('');
+audio8 = new Audio('');
+ document.getElementById("casino").src = "";
+}
+
+}
+        
+function checksound() {
+    var j = document.getElementById("sound");
+    if (j.checked == true)
+    {
+ 
+ audio1 = new Audio('sounds/winner.wav');
+ audio2 = new Audio('sounds/allin.wav');
+ audio3 = new Audio('sounds/fold.wav');
+ audio4 = new Audio('sounds/raise.wav'); 
+ audio5 = new Audio('sounds/chips.wav');
+ audio6 = new Audio('sounds/chipsmed.wav');
+ audio7 = new Audio('sounds/check.wav');
+ audio8 = new Audio('sounds/call.wav');
+ var audio = document.getElementById("casino")
+ audio.src = 'casino.ogg';
+ audio.load();
+ audio.play();
+ setLocalStorage("soundstatus", 0);
+    }
+    if (j.checked == false)
+    {
+    
+audio1 = new Audio('');
+audio2 = new Audio('');
+audio3 = new Audio('');
+audio4 = new Audio(''); 
+audio5 = new Audio('');
+audio6 = new Audio('');
+audio7 = new Audio('');
+audio8 = new Audio('');
+ document.getElementById("casino").src = "";
+  setLocalStorage("soundstatus", 1);
+    }
+    
+}
+
+
+
+
+
+</script>
+<script>
+var currenttable = 0;
+
+function checktable() {
+
+var feltcolor = getLocalStorage("currenttable");
+  if (feltcolor === null) {  // first time
+     currenttable = 0;
+  }
+  else currenttable = feltcolor;
+
+if (currenttable == 0)
+{
+document.getElementById("poker_table").style.backgroundImage = "url('static/images/poker_table.png')";
+}
+if (currenttable == 1)
+{
+document.getElementById("poker_table").style.backgroundImage = "url('static/images/poker_table_red.png')";
+}
+if (currenttable == 2)
+{
+document.getElementById("poker_table").style.backgroundImage = "url('static/images/poker_table_blue.png')";
+}
+if (currenttable == 3)
+{
+document.getElementById("poker_table").style.backgroundImage = "url('static/images/poker_table_black.png')";
+}
+}
+
+function changetable() {
+
+var feltcolor = getLocalStorage("currenttable");
+  if (feltcolor === null) {  // first time
+     currenttable = 0;
+  }
+  else currenttable = feltcolor;
+
+if (currenttable == 0)
+{
+document.getElementById("poker_table").style.backgroundImage = "url('static/images/poker_table_red.png')";
+}
+if (currenttable == 1)
+{
+document.getElementById("poker_table").style.backgroundImage = "url('static/images/poker_table_blue.png')";
+}
+if (currenttable == 2)
+{
+document.getElementById("poker_table").style.backgroundImage = "url('static/images/poker_table_black.png')";
+}
+if (currenttable == 3)
+{
+document.getElementById("poker_table").style.backgroundImage = "url('static/images/poker_table.png')";
+}
+currenttable++;
+if (currenttable == 4)
+currenttable = 0;
+setLocalStorage("currenttable", currenttable);
+}
+</script>
+ 
+</html>

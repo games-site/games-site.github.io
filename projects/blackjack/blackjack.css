@@ -1,0 +1,19 @@
+.cards img {
+  width: 125px;
+  height: 175px;
+  margin: 1%;
+}
+body {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.button {
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+}
+
+p {
+  font-size: large;
+}

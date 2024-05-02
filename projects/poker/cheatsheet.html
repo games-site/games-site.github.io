@@ -1,0 +1,174 @@
+<html>
+  <head>
+    <title>Hold'em Strategy</title>
+    <meta content="">
+<style>
+#strategy {
+    width: 850px;
+    margin: 0 auto;
+    height: 450px;
+    padding-top: 10px;
+}
+#strategy-left {
+    float:left;
+}
+#strategy-right {
+    float:right;
+}
+#unsuited_cards {
+    background: #000;
+    color: #fff;
+    font-size:12px;
+    line-height: 12px;
+    width: 400px;
+}
+#unsuited_cards td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+#pairs_suited_cards {
+    background: #000;
+    color: #fff;
+    font-size:12px;
+    line-height: 12px;
+    width: 400px;
+}
+#pairs_suited_cards td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+#legend td {
+    width: 30px;
+    height: 30px;
+    font-size:12px;
+    line-height: 12px;
+}
+
+
+#a {
+    background: red;
+    color: #000;
+}
+#b {
+    background: orange;
+    color: #000;
+}
+#c {
+    background: yellow;
+    color: #000;
+}
+#dd {
+    width: 65px !important;
+    color: #000;
+    height:30px;
+}
+#bl {
+    background: #000;
+}
+</style>
+  </head>
+  <body>
+  <div id="strategy">
+<div id="strategy-left">
+<label style="color:#000;">Pairs and Suited Cards</label>
+<table id="legend">
+<tr>
+<td id="a"></td><td id="dd">Any Position</td><td id="b"></td><td id="dd">Mid-Late</td><td id="c"></td><td id="dd">Late</td><td id="bl"></td><td id="dd">Never</td>
+<tr>
+</table>
+<table id="pairs_suited_cards">
+<tr>
+<td id="a">A-A</td><td id="a">A-K</td><td id="a">K-Q</td><td id="a">Q-J</td><td id="a">J-T</td><td id="a">T-9</td><td id="b">9-8</td><td id="c">8-7</td><td id="c">7-6</td><td id="c">6-5</td><td id="c">5-4</td><td id="">4-3</td><td id="">3-2</td>
+</tr>
+<tr>
+<td id="a">K-K</td><td id="a">A-Q</td><td id="a">K-J</td><td id="a">Q-T</td><td id="a">J-9</td><td id="b">T-8</td><td id="c">9-7</td><td id="c">8-6</td><td id="c">7-5</td><td id="">6-4</td><td id="">5-3</td><td id="">4-2</td><td id=""></td>
+</tr>
+<tr>
+<td id="a">Q-Q</td><td id="a">A-J</td><td id="a">K-T</td><td id="b">Q-9</td><td id="b">J-8</td><td id="c">T-7</td><td id="c">9-6</td><td id="">8-5</td><td id="">7-4</td><td id="">6-3</td><td id="">5-2</td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="a">J-J</td><td id="a">A-T</td><td id="b">K-9</td><td id="b">Q-8</td><td id="c">J-7</td><td id="">T-6</td><td id="">9-5</td><td id="">8-4</td><td id="">7-3</td><td id="">6-2</td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="a">T-T</td><td id="b">A-9</td><td id="c">K-8</td><td id="">Q-7</td><td id="">J-6</td><td id="">T-5</td><td id="">9-4</td><td id="">8-3</td><td id="">7-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="a">9-9</td><td id="b">A-8</td><td id="c">K-7</td><td id="">Q-6</td><td id="">J-5</td><td id="">T-4</td><td id="">9-3</td><td id="">8-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="a">8-8</td><td id="b">A-7</td><td id="c">K-6</td><td id="">Q-5</td><td id="">J-4</td><td id="">T-3</td><td id="">9-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="a">7-7</td><td id="b">A-6</td><td id="c">K-5</td><td id="">Q-4</td><td id="">J-3</td><td id="">T-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="b">6-6</td><td id="c">A-5</td><td id="c">K-4</td><td id="">Q-3</td><td id="">J-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="b">5-5</td><td id="c">A-4</td><td id="c">K-3</td><td id="">Q-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="c">4-4</td><td id="c">A-3</td><td id="c">K-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="c">3-3</td><td id="c">A-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="c">2-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+</table>
+</div>
+<div id="strategy-right">
+<label style="color:#000;">Unsuited Cards</label>
+<table id="legend">
+<tr>
+<td id="a"></td><td id="dd">Any Position</td><td id="b"></td><td id="dd">Mid-Late</td><td id="c"></td><td id="dd">Late</td><td id="bl"></td><td id="dd">Never</td>
+<tr>
+</table>
+<table id="unsuited_cards">
+<tr>
+<td id="a">A-K</td><td id="a">K-Q</td><td id="b">Q-J</td><td id="b">J-T</td><td id="c">T-9</td><td id="c">9-8</td><td id="c">8-7</td><td id="">7-6</td><td id="">6-5</td><td id="">5-4</td><td id="">4-3</td><td id="">3-2</td>
+</tr>
+<tr>
+<td id="a">A-Q</td><td id="a">K-J</td><td id="b">Q-T</td><td id="c">J-9</td><td id="c">T-8</td><td id="c">9-7</td><td id="">8-6</td><td id="">7-5</td><td id="">6-4</td><td id="">5-3</td><td id="">4-2</td><td id=""></td>
+</tr>
+<tr>
+<td id="a">A-J</td><td id="b">K-T</td><td id="c">Q-9</td><td id="c">J-8</td><td id="">T-7</td><td id="">9-6</td><td id="">8-5</td><td id="">7-4</td><td id="">6-3</td><td id="">5-2</td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="a">A-T</td><td id="c">K-9</td><td id="">Q-8</td><td id="">J-7</td><td id="">T-6</td><td id="">9-5</td><td id="">8-4</td><td id="">7-3</td><td id="">6-2</td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="c">A-9</td><td id="">K-8</td><td id="">Q-7</td><td id="">J-6</td><td id="">T-5</td><td id="">9-4</td><td id="">8-3</td><td id="">7-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="c">A-8</td><td id="">K-7</td><td id="">Q-6</td><td id="">J-5</td><td id="">T-4</td><td id="">9-3</td><td id="">8-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="c">A-7</td><td id="">K-6</td><td id="">Q-5</td><td id="">J-4</td><td id="">T-3</td><td id="">9-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="">A-6</td><td id="">K-5</td><td id="">Q-4</td><td id="">J-3</td><td id="">T-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="">A-5</td><td id="">K-4</td><td id="">Q-3</td><td id="">J-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="">A-4</td><td id="">K-3</td><td id="">Q-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="">A-3</td><td id="">K-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td id="">A-2</td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td><td id=""></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+</table>
+</div>
+</div> 
+  </body>
+</html>

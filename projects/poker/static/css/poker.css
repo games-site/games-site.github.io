@@ -1,0 +1,631 @@
+html {
+
+}
+.card {
+     -webkit-filter: drop-shadow(0px 0px 1px #000);
+     filter: drop-shadow(0px 0px 1px #000);
+}
+
+.avatar {
+    bottom: 0px;
+    left: 0px;
+    float: left;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+}
+
+.avatar img {
+    width: 48px;
+    height: 48px;    
+}
+.speech-bubble {
+    background-color: deeppink;
+    border: 1px solid deeppink;
+    border-radius: 5px;
+    width: 79px;
+    height: 10px;
+    color: #fff;
+    text-align: center;
+    padding: 2px;
+    position: absolute;
+    left: 40px;
+    top: 30px;
+    font-size: 12px;
+    line-height: 10px;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-top-color: deeppink;
+	border-bottom: 0;
+	margin-left: -10px;
+	margin-bottom: -10px;
+}
+.poker-table {
+    background-repeat: no-repeat;
+    position: absolute;
+    margin: 0 auto;
+    left: 0px;
+    right: 0;
+    height: 461px;
+    width: 745px;
+    top: 0px;
+}
+
+.seat {
+    height: 150px;
+    position: absolute;
+    width: 150px;
+}
+#button0, #button1, #button2, #button3, #button4, #button5, #button6, #button7, #button8, #button9 {
+    background-image: url('../images/dealerbutton.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 19px;
+    width: 24px;
+    position: absolute;
+}
+
+#botnamechips {
+    background: linear-gradient(45deg, #666666, #333333);
+    border-radius: 5px 5px 0 0;
+    color: white;
+    font-size: 14px;
+    line-height: 14px;
+    height: 33px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    position: absolute;
+    text-align: center;
+    top: 65px;
+    width: 140px;
+}
+
+#playernamechips {
+    background: linear-gradient(45deg, #666666, #333333);
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    font-size: 14px;
+    line-height: 14px;
+    height: 32px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    position: absolute;
+    text-align: center;
+    top: 85px;
+    width: 260px;
+    right: -50px;
+}
+
+
+#mplayername {
+    float: left;
+    margin-left: 15px;
+    background: #000;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#bplayername {
+    width: 100%;
+}
+
+#mplayerchips {
+    float: right;
+    margin-right: 15px;
+    background: #000;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+
+#hcplayer {
+    float: left;
+    height: 73px;
+    left: 20px;
+    position: absolute;
+    top: 3px;
+    width: 102px;
+}
+
+#bcplayer {
+    float: left;
+    height: 73px;
+    left: 20px;
+    position: absolute;
+    top: 3px;
+    width: 102px;
+}
+
+
+#hplayer1 {
+    left: 5px;
+    position: absolute;
+    transform: rotate(0deg);
+    background-image: url('../images/cardback.png');
+    background-size: 100%;
+    border-radius: 4px;
+    height:75px;
+    width: 54px;
+    top: 30px;
+}
+
+#hplayer2 {
+    left: 46px;
+    position: absolute;
+    transform: rotate(0deg);
+    background-image: url('../images/cardback.png');
+    background-size: 100%;
+    border-radius: 4px;
+    height:75px;
+    width: 54px;
+    top: 30px;
+}
+
+#bplayer1 {
+    left: -15px;
+    position: absolute;
+    transform: rotate(0deg);
+    background-image: url('../images/cardback.png');
+    background-size: 100%;
+    border-radius: 4px;
+    height:75px;
+    width: 54px;
+    top: 25px;
+}
+
+#bplayer2 {
+    left: 26px;
+    position: absolute;
+    transform: rotate(0deg);
+    background-image: url('../images/cardback.png');
+    background-size: 100%;
+    border-radius: 4px;
+    height:75px;
+    width: 54px;
+    top: 25px;
+}
+
+#bbet1, #bbet2, #bbet3, #bbet4, #bbet5, #bbet6, #bbet7, #bbet8, #bbet9 {
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+    line-height: 12px;
+    height:12px;
+    left: 0;
+    text-align: center;
+    width: 130px;
+    right: 0;
+    margin-top: 110px;
+    border-radius: 0 0 5px 5px;
+    bottom: 0;
+    text-shadow: 0 0 5px #000;
+    background: #000;
+    text-align: center;
+
+
+}
+
+#mybet {
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+    line-height: 12px;
+    height:12px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    width: 130px;
+    margin-top: 130px;
+    border-radius: 0 0 5px 5px;
+    bottom: 0;
+    text-shadow: 0 0 5px #000;
+    background: #000;
+    text-align: center;
+
+
+}
+
+#seat1 {
+    left: 0px;
+    top:  330px;
+}
+
+#seat1 .bet {
+    top: -20px;
+}
+
+#seat2 {
+    left:  -50px;
+    top: 155px;
+}
+
+#seat2 .bet {
+    top: 100px;
+}
+
+#seat3 {
+    left: 0px;
+    top:  0px;
+}
+
+#seat3 .bet {
+    top: 100px;
+}
+
+#seat4 {
+    left: 200px;
+    top:    0px;
+}
+
+#seat4 .bet {
+    top: 100px;
+}
+
+#seat5 {
+    left: 400px;
+    top:    0px;
+}
+
+#seat5 .bet {
+    top: 100px;
+}
+
+#seat6 {
+    left: 600px;
+    top:    0px;
+}
+
+
+#seat6 .bet {
+    top: 100px;
+}
+
+#seat7 {
+    left: 650px;
+    top:  155px;
+}
+
+#seat7 .bet {
+    top: 100px;
+}
+
+#seat8 {
+    left: 600px;
+    top:  330px;
+}
+
+#seat8 .bet {
+    top: -20px;
+}
+/*
+#seat9 {
+    left: 400px;
+    top:  330px;
+}
+
+#seat9 .bet {
+    top: -20px;
+}
+*/
+#seat0 {
+    left: 300px;
+    top:  330px;
+}
+
+#seat0 .bet {
+    top: -20px;
+}
+
+
+#board {
+    left: 200px;
+    right: 200px;
+    position: absolute;
+    top:  200px;
+    perspective: 400px;
+    margin: 0 auto;
+}
+
+#pot {
+    color: white;
+    font-size: 12px;
+    line-height: 12px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    text-align: center;
+    top: 165px;
+    margin: 0 auto;
+    background: #000;
+    width: 180px;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.boardcard {
+    height: 50px;
+    left: 0px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -10px;
+    width: 34px;
+    box-shadow: 0 0 5px #000;
+    transform: rotateX(20deg);
+}
+
+#flop1 {
+    background-size: 100%;
+    border-radius: 4px;
+    height:75px;
+    width: 54px;
+}
+
+#flop2 {
+    left: 72px;
+    background-size: 100%;
+    border-radius: 4px;
+    height:75px;
+    width: 54px;
+}
+
+#flop3 {
+    left: 144px;
+    background-size: 100%;
+    border-radius: 4px;
+    height:75px;
+    width: 54px;
+}
+
+#turn {
+    left: 216px;
+    background-size: 100%;
+    border-radius: 4px;
+    height:75px;
+    width: 54px;
+}
+
+#river {
+    left: 288px;
+    background-size: 100%;
+    border-radius: 4px;
+    height:75px;
+    width: 54px;
+}
+
+#burn1 {
+    left: 280px;
+    transform: rotate(-18deg);
+}
+#burn2 {
+    left: 290px;
+}
+#burn3 {
+    left: 300px;
+    transform: rotate(15deg);
+}
+
+#action-options {
+    height: 20px;
+    position: absolute;
+    width: 336px;
+    margin: 0 auto;
+    font-family: western !important;
+    
+}
+
+.action-button {
+    background-color: silver;
+    color: #000000;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 18px;
+    height: 20px;
+    padding: 10px;
+    margin: 5px;
+    position: absolute;
+    text-align: center;
+    width: 140px;
+    border-radius: 2px;
+}
+
+#setup-options {
+    width: 336px;
+    height: 32px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+}
+
+.setup-button {
+    background-image: url('../images/buttonpurple.png');
+    border-radius:2px;
+    height: 30px;
+    color: white;
+    float: left;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    font-size: 9px;
+    padding: 2px;
+    margin: 2px;
+    text-align: center;
+    width: 34px;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+.setup-button:hover {
+    box-shadow: 3px 3px 4px #000000;
+}
+
+#speed-button {
+    cursor: default;
+    top: 50px;
+}
+
+select {
+    background-color: silver;
+    background: silver;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    right: 10px;
+    top: 10px;
+    width: 3em;
+}
+
+#mode-button {
+    top: 100px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#help-button {
+    top: 150px;
+}
+
+#check-button {
+    top: 200px;
+}
+
+#history {
+}
+
+#game-response {
+    color: #aaa;
+    font-size: 12px;
+    line-height: 12px;
+    position: absolute;
+    text-align: center;
+    width: 280px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+}
+
+#production-code {
+
+}
+
+.response-normal {
+    background-color: transparent;
+}
+
+
+.response-warning {
+    background-color: #FF0000;
+}
+
+#fold-button {
+    background-image: url('../images/buttonred.png');
+    text-align: center;
+    float: left;
+    left: 0;
+}
+
+#fold-button:hover {
+    box-shadow: 3px 3px 4px #000000;
+}
+
+#call-button {
+  
+    text-align: center;
+    float: right;
+    right: 0;
+
+}
+
+#call-button {
+    background-image: url('../images/buttongreen.png');
+}
+
+#call-button:hover {
+    box-shadow: 3px 3px 4px #000000;
+}
+
+#raise-button {
+    background: dodgerblue;
+    text-align: center;
+    top: 30px;
+    padding-top: 30px;
+}
+
+#raise-button:hover {
+    box-shadow: 3px 3px 4px #000000;
+}
+
+#quick-raises {
+
+    font-size: 12px;
+    line-height: 12px;
+    height: 45px;
+    position: absolute;
+    text-align: center;
+    width: 336px;
+    margin-top: 55px;
+}
+#quick-raises a:link {
+    color: white;
+    text-shadow: 0 0 2px #000000;
+    text-decoration: none;
+    padding: 5px;
+    margin: 1px !important;
+}
+#quick-raises a:hover {
+    color: white;
+    text-shadow: 3px 3px 4px #000000;
+}
+
+.grad0 {
+    background: #ceff00;
+}
+
+.grad1 {
+    background: #d6d500  ;
+}
+
+.grad2 {
+    background: #deaa00  ;
+}
+
+.grad3 {
+     background: #e68000 ;
+}
+
+.grad4 {
+    background:#ef5500   ;
+}
+
+.grad5 {
+   background: #f72b00   ;
+}
+.grad6 {
+   background: #ff0000  ;
+}
+
+#modal-box {
+
+}
+
+#modal-box a:link {
+
+}
+#modal-box a:hover {
+
+}
+
