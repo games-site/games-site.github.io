@@ -201,3 +201,64 @@ hr.double {
  border-top: 3px double;
  border-bottom: none;
 }
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  float: right;
+}
+
+/* Dropdown button */
+.dropbtn {
+  background-color: #a83234;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style radio buttons */
+input[type="radio"] {
+  margin: 5px;
+}
+
+/* Images */
+.image {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Size classes */
+.small {
+  width: 180px;
+  height: 180px;
+}
+
+.medium {
+  width: 240px;
+  height: 240px;
+}
+
+.large {
+  width: 360px;
+  height: 360px;
+}
