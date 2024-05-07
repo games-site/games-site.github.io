@@ -236,6 +236,11 @@ hr.double {
   display: block;
 }
 
+.radio-buttons {
+  padding: 10px;
+  float: left;
+}
+
 /* Style radio buttons */
 input[type="radio"] {
   margin: 5px;
