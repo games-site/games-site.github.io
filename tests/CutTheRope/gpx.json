@@ -1,0 +1,42 @@
+{
+  "name": "ctro",
+  "version": "4",
+  "symbols": "1",
+  "origin": "c++",
+  "engineVersion": "",
+  "webglAttributes": {
+    "maxWebGLVersion": 1
+  },
+  "runtime": {
+    "aspect": [
+      0.7,
+      0.7
+    ],
+    "orientation": "portrait",
+    "res": [
+      {
+        "glob": "emscripten/**",
+        "root": "emscripten/"
+      }
+    ]
+  },
+  "tinyLoaderScript": "tiny-loader.js",
+  "sdkScripts": [
+    "sdk.js",
+    "gamepix-adapter.js"
+  ],
+  "sizes": {
+    "br/bin.data._.js.br": 5677483,
+    "br/bin.data.js.br": 8315,
+    "br/wbin.js.br": 44171,
+    "br/wbin._.js.br": 370978,
+    "gz/bin.data.js.gz": 10374,
+    "gz/bin.data._.js.gz": 5868392,
+    "gz/wbin._.js.gz": 487210,
+    "gz/wbin.js.gz": 51450,
+    "bin.data._.js": 7013448,
+    "bin.data.js": 52416,
+    "wbin._.js": 1409297,
+    "wbin.js": 203432
+  }
+}

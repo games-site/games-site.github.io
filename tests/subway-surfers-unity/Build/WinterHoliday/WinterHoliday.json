@@ -1,0 +1,19 @@
+{
+"companyName": "Kiloo Games",
+"productName": "Subway Surfers",
+"productVersion": "1.94.0",
+"dataUrl": "WinterHoliday.data.unityweb",
+"wasmCodeUrl": "WinterHoliday.wasm.code.unityweb",
+"wasmFrameworkUrl": "WinterHoliday.wasm.framework.unityweb",
+"asmCodeUrl": "WinterHoliday.asm.code.unityweb",
+"asmMemoryUrl": "WinterHoliday.asm.memory.unityweb",
+"asmFrameworkUrl": "WinterHoliday.asm.framework.unityweb",
+"TOTAL_MEMORY": 369098752,
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.2.0f1"
+}
