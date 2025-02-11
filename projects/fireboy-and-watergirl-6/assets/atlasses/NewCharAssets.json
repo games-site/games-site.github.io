@@ -1,0 +1,67 @@
+{"frames": [
+
+{
+	"filename": "_default0000",
+	"frame": {"x":205,"y":239,"w":0,"h":0},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":0,"h":0},
+	"sourceSize": {"w":0,"h":0}
+}
+,{
+	"filename": "fat_body_idle0000",
+	"frame": {"x":0,"y":0,"w":131,"h":163},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":163},
+	"sourceSize": {"w":131,"h":163}
+}
+,{
+	"filename": "flying_body_idle0000",
+	"frame": {"x":135,"y":0,"w":70,"h":68},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":68},
+	"sourceSize": {"w":70,"h":68}
+}
+,{
+	"filename": "flying_body_idle0001",
+	"frame": {"x":0,"y":167,"w":70,"h":68},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":68},
+	"sourceSize": {"w":70,"h":68}
+}
+,{
+	"filename": "flying_body_idle0002",
+	"frame": {"x":74,"y":167,"w":70,"h":68},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":68},
+	"sourceSize": {"w":70,"h":68}
+}
+,{
+	"filename": "flying_body_idle0003",
+	"frame": {"x":148,"y":167,"w":70,"h":68},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":68},
+	"sourceSize": {"w":70,"h":68}
+}
+,{
+	"filename": "flying_glow0000",
+	"frame": {"x":0,"y":239,"w":201,"h":193},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":201,"h":193},
+	"sourceSize": {"w":201,"h":193}
+}],
+"meta": {
+	"app": "Adobe Flash CS6",
+	"version": "12.0.0.481",
+	"image": "NewCharAssets.png",
+	"format": "RGBA8888",
+	"size": {"w":256,"h":512},
+	"scale": "1"
+}
+}
