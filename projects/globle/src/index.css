@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.globe {
+  -webkit-tap-highlight-color: transparent;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+
+.globe:active {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+}

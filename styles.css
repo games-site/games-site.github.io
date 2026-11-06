@@ -46,6 +46,14 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.game-tile-new {
+  transition: transform 0.3s ease;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #888;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 .ad-tile {
   transition: transform 0.3s ease;
   border-radius: 10px;
